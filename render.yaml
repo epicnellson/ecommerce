@@ -3,7 +3,7 @@ services:
     name: ecommerce-backend
     runtime: node
     plan: free
-    buildCommand: npm install
+    buildCommand: npm install --legacy-peer-deps
     startCommand: node src/server.js
     rootDir: ecommerce-backend
     healthCheckPath: /
