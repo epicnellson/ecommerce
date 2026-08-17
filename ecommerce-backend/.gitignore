@@ -1,0 +1,9 @@
+node_modules/
+.env
+.env.test
+.env.local
+coverage/
+*.log
+test-db.js
+test-login.json
+test-register.json
