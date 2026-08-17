@@ -159,7 +159,7 @@ function Header() {
                   <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
                     <FaUser className="text-blue-500 text-sm" />
                   </div>
-                  <span className="text-sm font-medium">{user.name.split(' ')[0]}</span>
+                  <span className="text-sm font-medium">{user?.name?.split(' ')[0]}</span>
                   <FaChevronDown className={`text-xs transition-transform ${userMenuOpen ? 'rotate-180' : ''}`} />
                 </button>
                 <AnimatePresence>
