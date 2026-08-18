@@ -13,9 +13,11 @@ export const AuthProvider = ({ children }) => {
   const checkAuth = async () => {
     try {
       const { data } = await api.get('/auth/profile');
+      localStorage.setItem('sz_session', '1');
       setUser(data);
       return data;
     } catch {
+      localStorage.removeItem('sz_session');
       setUser(null);
       return null;
     }
@@ -23,10 +25,15 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const initAuth = async () => {
+      if (!localStorage.getItem('sz_session')) {
+        setLoading(false);
+        return;
+      }
       try {
         const { data } = await api.get('/auth/profile');
         setUser(data);
       } catch {
+        localStorage.removeItem('sz_session');
         setUser(null);
       } finally {
         setLoading(false);
@@ -36,6 +43,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const login = async (userData) => {
+    localStorage.setItem('sz_session', '1');
     setUser(userData);
   };
 
@@ -46,6 +54,7 @@ export const AuthProvider = ({ children }) => {
     } catch (error) {
       console.error('Logout error:', error);
     } finally {
+      localStorage.removeItem('sz_session');
       setUser(null);
     }
   };
