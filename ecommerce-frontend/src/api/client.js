@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL = (import.meta.env.VITE_API_URL || '').replace(/^[^h]+(?=https?:)/, '') || 'https://ecommerce-backend-8nj2.onrender.com';
+const baseURL = import.meta.env.VITE_API_URL || 'https://ecommerce-backend-8nj2.onrender.com';
 
 const api = axios.create({
   baseURL,
